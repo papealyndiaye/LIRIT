@@ -54,12 +54,20 @@ export default function Accueil() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-neutral-900 text-white flex items-center justify-center min-h-[250px]">
-        <img
-          src="https://media.contentapi.ea.com/content/dam/eacom/common/ea-featured-image.jpg"
-          alt="EA Hero"
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
-        />
+      <section className="relative text-white flex items-center justify-center min-h-[250px] overflow-hidden">
+        {/* Vidéo de fond */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.5, zIndex: 0 }}
+        >
+          <source src="/video-lirit.mp4" type="video/mp4" />
+          {/* Remplace /video-lirit.mp4 par le chemin de ta vidéo */}
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
         <div className="relative z-10 text-center max-w-2xl mx-auto py-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Bienvenue sur le portail du LIRIT</h1>
           <p className="mb-6 text-lg md:text-2xl">Explorez nos axes de recherche, nos équipes, nos projets et publications, et bien plus encore.</p>
