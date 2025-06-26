@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px);}
+  to { opacity: 1; transform: translateX(0);}
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px);}
+  to { opacity: 1; transform: translateX(0);}
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85);}
+  to { opacity: 1; transform: scale(1);}
+}
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s both;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1s both;
+}
+.animate-zoom-in {
+  animation: zoomIn 0.8s both;
+}
+.animate-fade-in-left {
+  animation: fadeInLeft 1s both;
+}
+.animate-fade-in-right {
+  animation: fadeInRight 1s both;
+}
+
+/* Ajoute dans ton CSS global si besoin */
+.scrollbar-thumb-white::-webkit-scrollbar-thumb { background: #fff; }
+.scrollbar-track-blue-800::-webkit-scrollbar-track { background: #1e40af; }
