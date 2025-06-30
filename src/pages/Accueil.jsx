@@ -31,26 +31,35 @@ export default function Accueil() {
     setMenuOpen(false);
   };
 
- 
-
   return (
-    <div className="min-h-screen bg-transparent font-sans">
+    <div className="min-h-screen bg-transparent font-sans relative">
+      {/* Vidéo de fond sur toute la page */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover z-0"
+        style={{ minHeight: '100vh', maxHeight: 'none' }}
+      >
+        <source src="/bg3.mp4" type="video/mp4" />
+      </video>
       {/* Header */}
-      <header className="bg-white-900  ">
+      <header className="bg-transparent shadow-none relative z-10">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <img src="" alt="" className="h-8" />
           </a>
           {/* Desktop Menu */}
-          <nav className="hidden md:flex gap-8 text-sm font-semibold items-center">
-            <a href="/" className="hover:text-red-500 hover:underline underline-offset-4">Accueil</a>
+          <nav className="hidden md:flex gap-8 text-sm font-semibold items-center text-white">
+            <a href="/" className="hover:text-indigo-200 hover:underline underline-offset-4">Accueil</a>
             
             {/* Menu Recherche */}
             <div className="relative">
               <button
                 onClick={() => setOpenRecherche(v => !v)}
-                className="hover:text-red-500 hover:underline underline-offset-4 flex items-center gap-1"
+                className="hover:text-indigo-200 hover:underline underline-offset-4 flex items-center gap-1"
                 type="button"
               >
                 Recherche
@@ -62,18 +71,18 @@ export default function Accueil() {
                 <div className="absolute left-0 mt-2 w-48 rounded bg-white text-gray-900 shadow-lg z-20">
                   {/* Lien vers la page Axes */}
                   <a href="/axes" className="block px-4 py-2 hover:bg-gray-100">Axes de recherche</a>
-                  <a href="#equipes" onClick={e => {e.preventDefault(); scrollToEquipes(e); setMenuOpen(false); setOpenRecherche(false);}} className="block px-4 py-2 hover:bg-gray-100">Équipes (ILIAD & RIISC)</a>
+                  <a href="#equipes" onClick={e => {e.preventDefault(); scrollToEquipes(e); setMenuOpen(false); setOpenRecherche(false);}} className="block px-4 py-2 text-white hover:bg-gray-100">Équipes (ILIAD & RIISC)</a>
                 </div>
               )}
             </div>
 
-            <a href="/espace-membre" className="hover:text-red-500 hover:underline underline-offset-4">Espace membre</a>
+            <a href="/espace-membre" className="hover:text-indigo-200 hover:underline underline-offset-4">Espace membre</a>
             
             {/* Menu Ressources */}
             <div className="relative">
               <button
                 onClick={() => setOpenRessources(v => !v)}
-                className="hover:text-red-500 hover:underline underline-offset-4 flex items-center gap-1"
+                className="hover:text-indigo-200 hover:underline underline-offset-4 flex items-center gap-1"
                 type="button"
               >
                 Ressources
@@ -89,58 +98,47 @@ export default function Accueil() {
               )}
             </div>
 
-            <a href="#contact" onClick={scrollToContact} className="hover:text-red-500 hover:underline underline-offset-4">A propos</a>
+            <a href="#contact" onClick={scrollToContact} className="hover:text-indigo-200 hover:underline underline-offset-4">A propos</a>
           </nav>
           {/* Burger */}
           <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-            <span className="block w-6 h-0.5 bg-white mb-1"></span>
-            <span className="block w-6 h-0.5 bg-white mb-1"></span>
-            <span className="block w-6 h-0.5 bg-white"></span>
+            <span className="block w-6 h-0.5 bg-white mb-1 transition-colors"></span>
+            <span className="block w-6 h-0.5 bg-white mb-1 transition-colors"></span>
+            <span className="block w-6 h-0.5 bg-white transition-colors"></span>
           </button>
         </div>
         {/* Mobile Menu */}
         {menuOpen && (
-          <nav className="md:hidden bg-neutral-900 px-6 pb-4 flex flex-col gap-2">
-            <a href="/" className="hover:text-red-500 hover:underline underline-offset-4">Accueil</a>
+          <nav className="md:hidden bg-white bg-opacity-10 px-6 pb-4 flex flex-col gap-2 text-white">
+            <a href="/" className="hover:text-indigo-200 hover:underline underline-offset-4">Accueil</a>
             {/* Lien direct vers la page Axes */}
-            <a href="/axes" className="hover:text-red-500 hover:underline underline-offset-4">Axes de recherche</a>
-            <a href="#equipes" onClick={scrollToEquipes} className="hover:text-red-500 hover:underline underline-offset-4">Équipes</a>
-            <a href="/espace-membre" className="hover:text-red-500 hover:underline underline-offset-4">Espace membre</a>
-            <a href="/projets-publications" className="hover:text-red-500 hover:underline underline-offset-4">Projets & Publications</a>
+            <a href="/axes" className="hover:text-indigo-200 hover:underline underline-offset-4">Axes de recherche</a>
+            <a href="#equipes" onClick={scrollToEquipes} className="hover:text-indigo-200 hover:underline underline-offset-4">Équipes</a>
+            <a href="/espace-membre" className="hover:text-indigo-200 hover:underline underline-offset-4">Espace membre</a>
+            <a href="/projets-publications" className="hover:text-indigo-200 hover:underline underline-offset-4">Projets & Publications</a>
             <a href="#blog" onClick={e => {
               e.preventDefault();
               document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' });
               setMenuOpen(false);
-            }} className="hover:text-red-500 hover:underline underline-offset-4">Blog scientifique</a>
-            <a href="#contact" onClick={scrollToContact} className="hover:text-red-500 hover:underline underline-offset-4">Contact</a>
+            }} className="hover:text-indigo-200 hover:underline underline-offset-4">Blog scientifique</a>
+            <a href="#contact" onClick={scrollToContact} className="hover:text-indigo-200 hover:underline underline-offset-4">Contact</a>
           </nav>
         )}
       </header>
 
       {/* Hero Section style "We're changing the way people connect" */}
       <section
-        className="relative flex flex-col-reverse md:flex-row items-center justify-between w-full-7xl mx-auto width:'100vw' px-6 py-20 overflow-hidden"
+        className="relative flex flex-col-reverse md:flex-row items-center justify-between w-full-7xl mx-auto width:'100vw' px-6 py-20 overflow-hidden z-10"
         style={{ minHeight: 500 }}
       >
-        {/* Vidéo de fond */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ minHeight: 500, maxHeight: 700 }}
-        >
-          <source src="/bg1.mp4" type="video/mp4" />
-        </video>
-
         {/* Texte à gauche avec animation */}
-        <div className="w-full md:w-1/2 z-10 animate-fade-in-left">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-            Le Laboratoire Interdisciplinaire de Recherche  
+        <div className="w-full md:w-1/2 z-10 animate-fade-in-left flex flex-col justify-start mt-0 md:mt-[-40px]">
+          <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight text-white">
+            Laboratoire Interdisciplinaire de Recherche 
+            en Informatique et Télécommunications 
           </h1>
           <p className="mb-8 text-lg md:text-xl text-white">
-            en Informatique et Télécommunications (LIRIT) regroupe des équipes dynamiques, des projets innovants et une communauté engagée pour faire avancer la recherche et l'innovation.
+            regroupe des équipes dynamiques, des projets innovants et une communauté engagée pour faire avancer la recherche et l'innovation.
           </p>
           <div className="flex gap-4">
             <a
@@ -164,13 +162,13 @@ export default function Accueil() {
       </section>
 
       {/* Section Galerie & Médias */}
-      <section className="bg-white py-16">
+      <section className="bg-transparent py-16">
   <div className="max-w-5xl mx-auto px-4">
-    <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 animate-fade-in-up">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 animate-fade-in-up text-white">
       Unwavering in our commitment to trust
     </h2>
-    <p className="text-center text-blue-600 mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-      <a href="#" className="hover:underline flex items-center justify-center gap-1">
+    <p className="text-center text-indigo-200 mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+      <a href="#" className="hover:underline flex items-center justify-center gap-1 text-white">
         Learn more about us <span aria-hidden>›</span>
       </a>
     </p>
@@ -213,35 +211,41 @@ export default function Accueil() {
     {/* Statistiques */}
     <div className="grid grid-cols-2 md:grid-cols-6 gap-6 text-center mt-8">
       <div className="animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
-        <div className="text-2xl md:text-3xl font-bold">73M+</div>
-        <div className="text-gray-500 text-sm">Developers</div>
+        <div className="text-2xl md:text-3xl font-bold text-white">73M+</div>
+        <div className="text-indigo-200 text-sm">Developers</div>
       </div>
       <div className="animate-fade-in-up" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>
-        <div className="text-2xl md:text-3xl font-bold">100M+</div>
-        <div className="text-gray-500 text-sm">Public repositories</div>
+        <div className="text-2xl md:text-3xl font-bold text-white">100M+</div>
+        <div className="text-indigo-200 text-sm">Public repositories</div>
       </div>
       <div className="animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
-        <div className="text-2xl md:text-3xl font-bold">1000s</div>
-        <div className="text-gray-500 text-sm">Open source projects</div>
+        <div className="text-2xl md:text-3xl font-bold text-white">1000s</div>
+        <div className="text-indigo-200 text-sm">Open source projects</div>
       </div>
       <div className="animate-fade-in-up" style={{ animationDelay: '0.9s', animationFillMode: 'both' }}>
-        <div className="text-2xl md:text-3xl font-bold">1B+</div>
-        <div className="text-gray-500 text-sm">Contributors</div>
+        <div className="text-2xl md:text-3xl font-bold text-white">1B+</div>
+        <div className="text-indigo-200 text-sm">Contributors</div>
       </div>
       <div className="animate-fade-in-up" style={{ animationDelay: '1s', animationFillMode: 'both' }}>
-        <div className="text-2xl md:text-3xl font-bold">90+</div>
-        <div className="text-gray-500 text-sm">Top Forbes companies</div>
+        <div className="text-2xl md:text-3xl font-bold text-white">90+</div>
+        <div className="text-indigo-200 text-sm">Top Forbes companies</div>
       </div>
       <div className="animate-fade-in-up" style={{ animationDelay: '1.1s', animationFillMode: 'both' }}>
-        <div className="text-2xl md:text-3xl font-bold">4M+</div>
-        <div className="text-gray-500 text-sm">Organizations</div>
+        <div className="text-2xl md:text-3xl font-bold text-white">4M+</div>
+        <div className="text-indigo-200 text-sm">Organizations</div>
       </div>
     </div>
   </div>
 </section>
 
       {/* Section Blog */}
-      <Blog />
+
+      {/* Section Blog */}
+      <section className="bg-white bg-opacity-90 py-16">
+        <div className="max-w-5xl mx-auto px-4">
+          <Blog />
+        </div>
+      </section>
 
       {/* Section Projets & Publications */}
       <div id="projets-publications">
@@ -254,8 +258,10 @@ export default function Accueil() {
       </section>
 
       {/* Section Contact */}
-      <section ref={contactRef} id="contact">
-        <footer className="bg-white text-gray-900 rounded-t-xl mt-12">
+
+      {/* Section Contact */}
+      <section ref={contactRef} id="contact" className="bg-white bg-opacity-90 mt-12">
+        <footer className="text-gray-900 rounded-t-xl">
           <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
               {/* Partie gauche : Solution + Réseaux sociaux */}
